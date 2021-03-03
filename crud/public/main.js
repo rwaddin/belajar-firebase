@@ -11,6 +11,7 @@ refUser.on("value", (items)=>{
         html += "<tr>"+td+"</tr>"
     });
 
+    document.getElementsByTagName("table")[0].removeAttribute("hidden");
     document.getElementById('listData').innerHTML = html;
 })
 
