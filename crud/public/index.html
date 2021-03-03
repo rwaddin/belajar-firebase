@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/icofont/icofont.min.css">
+        <title>CRUD Firebase</title>
+        <style media="screen">
+            .table td, .table th{
+                vertical-align: middle;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container mt-5">
+
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="card shadow">
+                        <div class="card-header">
+                            <span>Firebase CRUD</span>
+                            <button type="button" class="btn btn btn-primary float-right" data-toggle="modal" data-target="#myModal">
+                              <i class="icofont-plus-circle"></i> Tambah
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nama</th>
+                                        <th>Divisi</th>
+                                        <th>#</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="listData">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Modal Heading</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                  <form id="formTambah">
+                      <div class="form-group">
+                          <label for="email">Nama:</label>
+                          <input type="text" class="form-control" id="nama" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="pwd">Divisi:</label>
+                          <select class="form-control" required id="divisi">
+                              <option value="sales">Sales</option>
+                              <option value="teknis">Technical Support</option>
+                              <option value="billing">Billing</option>
+                          </select>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <script>
+
+          var firebaseConfig = {
+            apiKey: "AIzaSyCwwY3VrPBX_utZHvF5i0ECw3NWJjaGhs8",
+            authDomain: "addin-firebasee.firebaseapp.com",
+            databaseURL: "https://addin-firebasee-default-rtdb.firebaseio.com",
+            projectId: "addin-firebasee",
+            storageBucket: "addin-firebasee.appspot.com",
+            messagingSenderId: "838966456921",
+            appId: "1:838966456921:web:1f18146e03fc2dc880b748",
+            measurementId: "G-22X5W179YS"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          firebase.analytics();
+
+          let db = firebase.database();
+        </script>
+        <script src="main.js"></script>
+    </body>
+</html>
