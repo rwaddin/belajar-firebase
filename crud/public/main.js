@@ -14,12 +14,18 @@ refUser.on("value", (items)=>{
     document.getElementById('listData').innerHTML = html;
 })
 
+// button trigger open modal tambah
+$("#btnTambah").click(function () {
+    document.getElementById("formEdit").setAttribute("hidden","")
+    document.getElementById("formTambah").removeAttribute("hidden");
+    $("#myModal").modal("show");
+})
 
 // proses tambah
 $("#formTambah").submit(function (e) {
     e.preventDefault();
-    let name = document.getElementById('nama').value;
-    let divisi = document.getElementById('divisi').value
+    let name    = document.getElementById('nama').value;
+    let divisi  = document.getElementById('divisi').value
     if (name === "" || divisi === "") {
         Swal.fire("Error", "Form not complete", "error");
     }else{
@@ -49,15 +55,38 @@ function btnRemove(){
     })
 }
 
+// get data edit
 function btnEdit() {
-    let id = $(this).data("id");
-    let nama = $(this).data("user").name;
-    let divisi = $(this).data("user").divisi;
+    let id      = $(this).data("id");
+    let nama    = $(this).data("user").name;
+    let divisi  = $(this).data("user").divisi;
 
+    document.getElementById("formEdit").removeAttribute("hidden");
+    document.getElementById("formTambah").setAttribute("hidden","")
+
+    $("#userId").val(id);
+    $("#namaEdit").val(nama);
+    $("#divisiEdit").val(divisi);
     $("#myModal").modal("show")
-    console.log();
+    console.log(nama, divisi);
 }
 
+// proses update
+document.getElementById("formEdit").addEventListener("submit", function(e){
+    e.preventDefault();
+    $("#myModal").modal("hide");
+    
+    let userId    = document.getElementById('userId').value;
+    let name      = document.getElementById('namaEdit').value;
+    let divisi    = document.getElementById('divisiEdit').value
+
+    refUser.update({
+        [userId] : {
+            name : name,
+            divisi : divisi
+        }
+    })
+})
 
 // tambah event notif
 refUser.on("child_added", (items)=>{
