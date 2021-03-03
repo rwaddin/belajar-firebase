@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Login Firebase</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-sm-4">
+                <div class="card shadow">
+                    <div class="card-body">
+
+                        <form>
+                            <div class="form-group">
+                              <label for="email">Email address:</label>
+                              <input type="email" class="form-control" placeholder="Enter email" id="email" >
+                            </div>
+                            <div class="form-group">
+                              <label for="pwd">Password:</label>
+                              <input type="password" class="form-control" placeholder="Enter password" id="pwd">
+                            </div>
+                            <button type="button" id="login" class="btn btn-primary">Login</button>
+                            <button type="button" id="signup" class="btn btn-warning">Signup</button>
+                          </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- third party -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyCwwY3VrPBX_utZHvF5i0ECw3NWJjaGhs8",
+            authDomain: "addin-firebasee.firebaseapp.com",
+            databaseURL: "https://addin-firebasee-default-rtdb.firebaseio.com",
+            projectId: "addin-firebasee",
+            storageBucket: "addin-firebasee.appspot.com",
+            messagingSenderId: "838966456921",
+            appId: "1:838966456921:web:1f18146e03fc2dc880b748",
+            measurementId: "G-22X5W179YS"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          const auth = firebase.auth();
+    </script>
+    <script src="login.js"></script>
+</body>
+</html>
