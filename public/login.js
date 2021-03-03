@@ -21,9 +21,6 @@ login.addEventListener("click", () => {
             icon : "success"
         })
 
-        signup.setAttribute("hidden","");
-        login.setAttribute("hidden","");
-        logout.removeAttribute("hidden");
     })
     .catch((err)=>{
         console.warn(err);
@@ -69,16 +66,34 @@ logout.addEventListener("click", ()=>{
             loading();
             auth.signOut()
             .then(()=>{
-                signup.removeAttribute("hidden");
-                login.removeAttribute("hidden");
-                logout.setAttribute("hidden","");
+                Swal.fire("success", "Logout berhasil", "success");
             })
             .catch((err)=>{
                 console.warn(err);
+                Swal.fire("error", "Logout gagal", "error");
             })
             .finally(()=>{
                 loading(0);
             })
         }
     })
+})
+
+
+// event listener
+auth.onAuthStateChanged((user)=>{
+
+    if(user){
+        console.warn("login");
+
+        signup.setAttribute("hidden","");
+        login.setAttribute("hidden","");
+        logout.removeAttribute("hidden");
+    }else{
+        console.warn("logout");
+
+        signup.removeAttribute("hidden");
+        login.removeAttribute("hidden");
+        logout.setAttribute("hidden","");
+    }
 })
